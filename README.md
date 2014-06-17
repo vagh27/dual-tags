@@ -9,4 +9,4 @@ AngularJS app that searches for / displays Instagram video/images
 - angular-animate  
 
 ###url syntax  
-<rootpath>/#/<tag1>/<tag2>
+rootpath/#/tag1/tag2
