@@ -1,0 +1,41 @@
+<!--<form ng-if="!results" ng-submit="submit(term)">
+	<div>
+		<input type="text" ng-model="term">    
+		<input type="submit">
+	</div>
+</form>-->  
+
+<div ng-if="results">
+	<!--{{count}}-->
+	<!--<h1>There are {{results.length}} results</h1>
+	<button ng-click="clear()">New Search</button>-->
+	<div class="container">
+		<!--<a ng-repeat="result in results" class="item" href="{{result.link}}">
+			<div class="flip"> 
+		        <div class="card"> 
+		            <div class="face front" style="background-image:url({{result.images.low_resolution.url}});"> 
+		                Front
+		            </div> 
+		            <div class="face back"> 
+		                Back
+		            </div> 
+		        </div> 
+		    </div> 
+		</a>-->
+		<a ng-repeat="result in results | limitTo:20" class="item {{result.class}}" href="{{result.link}}" target="_blank">
+			<div class="flip"> 
+		        <div class="card"> 
+		            <video class="face front" ng-if="result.type == 'video'" ng-src="{{ trustSrc(result.videos.standard_resolution.url) }}" autoplay loop muted></video>
+	                <div class="face front" ng-if="result.type == 'image'" style="background-image:url({{result.images.standard_resolution.url}});">
+	                	<span>#{{result.tag}}</span>
+	                </div> 
+		            <video class="face back" ng-if="result.type == 'video'" ng-src="{{ trustSrc(result.videos.standard_resolution.url2) }}" autoplay loop muted></video>
+	                <div class="face back" ng-if="result.type == 'image'" style="background-image:url({{result.images.standard_resolution.url2}});">
+	                	<span>#{{result.tag}}</span>
+	                </div> 
+		        </div> 
+		    </div> 
+		</a>
+		<div class="clear"></div>
+	</div>
+</div>
